@@ -6,14 +6,22 @@ function DogPics() {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    console.log("useEffect");
+    document.title = text;
+  }, [text]);
+
+  useEffect(() => {
+    setTimeout(() => setCount(0), 5000);
+  }, []);
+
+  useEffect(() => {
+   
     fetch("https://dog.ceo/api/breeds/image/random/3")
       .then((r) => r.json())
       .then((data) => {
         console.log("setState");
         setImages(data.message);
       });
-  });
+  },[]);
 
   console.log("render");
 
